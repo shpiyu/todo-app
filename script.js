@@ -102,34 +102,30 @@ function newTodo() {
   clearTodoInput()
 }
 
+function handleTodoInput(e) {
+  const key = e.key
+  if (key == 'Enter') {
+    newTodo()
+  }
+}
+
 function updateTodoListView(todoItem) {
   const todoValue = todoItem.value
-  console.log(todoValue)
-  const li = document.createElement('li')
-  li.setAttribute('class', 'todo-list-item')
-  li.setAttribute('name', todoValue)
+  const todoListItemTemplate = document.getElementById('todo-list-item-template')
+  const todoListItem = todoListItemTemplate.content.firstElementChild.cloneNode(true)
+  todoListItem.setAttribute('name', todoValue)
+  const checkBox = todoListItem.querySelector('input')
+  checkBox.setAttribute('name', todoValue)
 
-  const checkBoxItem = document.createElement('input')
-  checkBoxItem.setAttribute('type', 'checkbox')
-  checkBoxItem.setAttribute('name', todoValue)
-  checkBoxItem.setAttribute('onchange', 'onTodoItemCheck(this)')
-
-  const checkBoxLabel = document.createElement('label')
+  const checkBoxLabel = todoListItem.querySelector('label')
   checkBoxLabel.setAttribute('for', todoValue)
   checkBoxLabel.setAttribute('id', todoValue)
   checkBoxLabel.appendChild(document.createTextNode(todoValue))
-  checkBoxLabel.setAttribute('style', 'padding-left: 10px')
 
-  const deleteButton = document.createElement('button')
-  deleteButton.innerText = 'DELETE'
-  deleteButton.setAttribute('class', 'right del-btn')
-  deleteButton.setAttribute('onclick', 'onDeleteTodo(this)')
-  deleteButton.setAttribute('name', todoValue)
+  const deleteBtn = todoListItem.querySelector('button')
+  deleteBtn.setAttribute('name', todoValue)
 
-  li.appendChild(checkBoxItem)
-  li.appendChild(checkBoxLabel)
-  li.appendChild(deleteButton)
-  list.appendChild(li)
+  list.appendChild(todoListItem)
 }
 
 function clearTodoInput() {

@@ -18,7 +18,8 @@
       
       <div class="center input-container">
         <input id="todo-input" class="todo-input" type="text"
-          placeholder="Do something extraordinary...">
+          placeholder="Do something extraordinary..."
+          onkeypress="handleTodoInput(event)">
         <button class="button" onClick="newTodo()">Add Todo</button>  
       </div>
       <p id="error-text" class="error-text"></p>
@@ -31,5 +32,14 @@
       
     </div>
     <script src="./script.js"></script>
+
+    <!-- templates -->
+    <template id = "todo-list-item-template">
+      <li class="todo-list-item">
+        <input type="checkbox" onchange="onTodoItemCheck(this)">
+        <label style="padding-left: 10px;"></label>
+        <button class="right del-btn" onclick="onDeleteTodo(this)">DELETE</button>
+      </li>
+    </template>
   </body>
 </html>
