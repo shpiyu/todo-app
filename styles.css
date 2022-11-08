@@ -33,30 +33,45 @@ ul {
   height: 100vh;
 }
 
+.title {
+  font-family: 'Lobster', cursive;
+  color: #333;
+}
+
+.input-container {
+  display: flex;
+  width: 100%;
+  padding: 5px;
+}
+
+.todo-input {
+  padding: 10px 20px;
+  flex-grow: 1;
+  margin: 5px;
+}
+
 .title, .controls, .button {
   flex: none;
 }
 
 .button {
   padding: 10px 20px;
-}
-
-.todo-input {
-  padding: 10px 20px;
+  margin: 5px;
 }
 
 .todo-list {
   flex: 1 1 0;
   margin-top: 20px;
-  padding: 20px;
+  padding: 20px 10px;
   overflow-y: auto;
 }
 
 .todo-list li {
   padding: 10px 20px;
   width: 100%;
-  border: 1px solid black;
-  margin: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #eee;
+  box-shadow: 0px 1px 4px 2px #eee;
 }
 
 .todo-delete {
@@ -78,6 +93,8 @@ ul {
 
 .error-text {
   color: red;
+  margin: 10px;
+  text-align: center;
 }
 
 .todo-list-item {
@@ -86,4 +103,27 @@ ul {
 
 .right {
   margin-left: auto;
+}
+
+.del-btn {
+  background-color: white;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  color: rgb(183, 183, 183);
+}
+
+.del-btn:hover {
+  color: #333;
+}
+
+.empty-emoji {
+  color: #dadce0;
+  font-family: 'Fira Sans', sans-serif;
+  text-align: center;
+}
+
+.empty-emoji h1{
+  font-size: 100px;
+  margin-bottom: 50px;
 }

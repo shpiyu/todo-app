@@ -2,24 +2,33 @@
 <html>
   <head>
     <title>TODO App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="./styles.css" />
   </head>
   <body>
     <div class="container center">
-      <h1 class="center title">My TODO App</h1>
+      <h1 class="center title">My Todo App</h1>
       <div class="flow-right controls">
         <span>Item count: <span id="item-count">0</span></span>
         <span>Unchecked count: <span id="unchecked-count">0</span></span>
       </div>
       
-      <div class="center">
-        <input id="todo-input" class="todo-input" type="text">
-        <button class="button" onClick="newTodo()">Add New TODO</button>  
-        <br>
-        <p id="error-text" class="error-text"></p>
+      <div class="center input-container">
+        <input id="todo-input" class="todo-input" type="text"
+          placeholder="Do something extraordinary...">
+        <button class="button" onClick="newTodo()">Add Todo</button>  
       </div>
+      <p id="error-text" class="error-text"></p>
 
+      <div id="empty-message-container" class="empty-emoji">
+        <h1>ʕ•ᴥ•ʔ</h1>
+        <p>Nothing to do. Add a new todo above.</p>
+      </div>
       <ul id="todo-list" class="todo-list"></ul>
+      
     </div>
     <script src="./script.js"></script>
   </body>

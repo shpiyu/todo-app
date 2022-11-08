@@ -79,8 +79,13 @@ const itemCountSpan = document.getElementById('item-count')
 const uncheckedCountSpan = document.getElementById('unchecked-count')
 const todoInput = document.getElementById('todo-input')
 const errorText = document.getElementById('error-text')
+const emptyMsgContainer = document.getElementById('empty-message-container')
 
 const todoList = new TodoList()
+
+if (todoList.count == 0) {
+  showEmptyMessage()
+}
 
 function newTodo() {
   const todoItem = new Todo(todoInput.value)
@@ -90,13 +95,14 @@ function newTodo() {
     setTimeout(() => errorText.textContent = '', 2000)
     return
   }
-  appendTodoList(todoItem)
+  updateTodoListView(todoItem)
   itemCountSpan.textContent = todoList.count
   uncheckedCountSpan.textContent = todoList.unchekedCount
+  hideEmptyMessage()
   clearTodoInput()
 }
 
-function appendTodoList(todoItem) {
+function updateTodoListView(todoItem) {
   const todoValue = todoItem.value
   console.log(todoValue)
   const li = document.createElement('li')
@@ -115,8 +121,8 @@ function appendTodoList(todoItem) {
   checkBoxLabel.setAttribute('style', 'padding-left: 10px')
 
   const deleteButton = document.createElement('button')
-  deleteButton.textContent = 'Delete'
-  deleteButton.setAttribute('class', 'right')
+  deleteButton.innerText = 'DELETE'
+  deleteButton.setAttribute('class', 'right del-btn')
   deleteButton.setAttribute('onclick', 'onDeleteTodo(this)')
   deleteButton.setAttribute('name', todoValue)
 
@@ -163,4 +169,16 @@ function onDeleteTodo(button) {
       break
     }
   }
+  if (todoList.count === 0) {
+    showEmptyMessage()
+  }
+}
+
+
+function showEmptyMessage() {
+  emptyMsgContainer.style.display = 'block'
+}
+
+function hideEmptyMessage() {
+  emptyMsgContainer.style.display = 'none'
 }
