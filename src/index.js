@@ -1,3 +1,5 @@
+import './styles.css'
+
 const classNames = {
   TODO_ITEM: 'todo-container',
   TODO_CHECKBOX: 'todo-checkbox',
@@ -87,7 +89,7 @@ if (todoList.count == 0) {
   showEmptyMessage()
 }
 
-function newTodo() {
+window.newTodo = function newTodo() {
   const todoItem = new Todo(todoInput.value)
 
   if (!todoList.add(todoItem)) {
@@ -102,7 +104,7 @@ function newTodo() {
   clearTodoInput()
 }
 
-function handleTodoInput(e) {
+window.handleTodoInput = function handleTodoInput(e) {
   const key = e.key
   if (key == 'Enter') {
     newTodo()
@@ -133,7 +135,7 @@ function clearTodoInput() {
 }
 
 
-function onTodoItemCheck(checkbox) {
+window.onTodoItemCheck = function onTodoItemCheck(checkbox) {
   const todoItem = todoList.findByValue(checkbox.name)
   const label = document.getElementById(checkbox.name)
   if (checkbox.checked == true) {
@@ -154,7 +156,7 @@ function updateItemCount() {
   itemCountSpan.textContent = todoList.count
 }
 
-function onDeleteTodo(button) {
+window.onDeleteTodo = function onDeleteTodo(button) {
   const value = button.name
   for (let li of list.children) {
     if (li.getAttribute('name') === value) {
